@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46E87C458351F62A0355794D /* Pods_WannaDo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEFA363B977F91C65B2EEE2 /* Pods_WannaDo.framework */; };
 		E407316E2271678D00CAC651 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E407316C2271678D00CAC651 /* DataModel.xcdatamodeld */; };
 		E4C1229C226FFB3C00E2A630 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C1229B226FFB3C00E2A630 /* AppDelegate.swift */; };
 		E4C1229E226FFB3C00E2A630 /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C1229D226FFB3C00E2A630 /* ToDoListViewController.swift */; };
@@ -17,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0AA514B3F3786101946E982D /* Pods-WannaDo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WannaDo.debug.xcconfig"; path = "Target Support Files/Pods-WannaDo/Pods-WannaDo.debug.xcconfig"; sourceTree = "<group>"; };
+		5F9EC0AD4FE95DE0BBEA3198 /* Pods-WannaDo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WannaDo.release.xcconfig"; path = "Target Support Files/Pods-WannaDo/Pods-WannaDo.release.xcconfig"; sourceTree = "<group>"; };
+		BEEFA363B977F91C65B2EEE2 /* Pods_WannaDo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WannaDo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E407316D2271678D00CAC651 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		E4C12298226FFB3C00E2A630 /* WannaDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WannaDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4C1229B226FFB3C00E2A630 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -33,17 +37,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46E87C458351F62A0355794D /* Pods_WannaDo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0FC31C74593BB0312A7F4B4A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BEEFA363B977F91C65B2EEE2 /* Pods_WannaDo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3FBBB9AB2F383CC6D299F39E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0AA514B3F3786101946E982D /* Pods-WannaDo.debug.xcconfig */,
+				5F9EC0AD4FE95DE0BBEA3198 /* Pods-WannaDo.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		E4C1228F226FFB3C00E2A630 = {
 			isa = PBXGroup;
 			children = (
 				E4C1229A226FFB3C00E2A630 /* WannaDo */,
 				E4C12299226FFB3C00E2A630 /* Products */,
+				3FBBB9AB2F383CC6D299F39E /* Pods */,
+				0FC31C74593BB0312A7F4B4A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,9 +126,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E4C122AA226FFB3D00E2A630 /* Build configuration list for PBXNativeTarget "WannaDo" */;
 			buildPhases = (
+				3DF94C43D6D32C942DC320D9 /* [CP] Check Pods Manifest.lock */,
 				E4C12294226FFB3C00E2A630 /* Sources */,
 				E4C12295226FFB3C00E2A630 /* Frameworks */,
 				E4C12296226FFB3C00E2A630 /* Resources */,
+				F0477F6E5E5041AEE9BAE901 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -159,6 +186,55 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3DF94C43D6D32C942DC320D9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WannaDo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F0477F6E5E5041AEE9BAE901 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WannaDo/Pods-WannaDo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WannaDo/Pods-WannaDo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E4C12294226FFB3C00E2A630 /* Sources */ = {
@@ -312,6 +388,7 @@
 		};
 		E4C122AB226FFB3D00E2A630 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AA514B3F3786101946E982D /* Pods-WannaDo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -329,6 +406,7 @@
 		};
 		E4C122AC226FFB3D00E2A630 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F9EC0AD4FE95DE0BBEA3198 /* Pods-WannaDo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
