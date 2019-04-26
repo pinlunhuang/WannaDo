@@ -7,6 +7,6 @@ Use Pods
 2. SwipeCellKit
 3. ChameleonFramework/Swift
 
-![Shot1](https://github.com/pinlunhuang/WannaDo/blob/master/Screenshot1.png | width=100)
-![Shot2](https://github.com/pinlunhuang/WannaDo/blob/master/Screenshot2.png | width=100)
-![Shot3](https://github.com/pinlunhuang/WannaDo/blob/master/Screenshot3.png | width=100)
+<img src="https://github.com/pinlunhuang/WannaDo/blob/master/Screenshot1.png" width="200" height="400" />
+<img src="https://github.com/pinlunhuang/WannaDo/blob/master/Screenshot2.png" width="200" height="400" />
+<img src="https://github.com/pinlunhuang/WannaDo/blob/master/Screenshot3.png" width="200" height="400" />
