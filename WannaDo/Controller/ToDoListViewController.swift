@@ -38,24 +38,6 @@ class ToDoListViewController: SwipeTableViewController {
         
         updateNavBar(withHexCode: colorHex)
         
-//        guard let navBar = navigationController?.navigationBar else {
-//            fatalError("Navigation controller doesn't exist")
-//        }
-//
-//        guard if let colorHex = selectedCategory?.color else {fatalError()}
-//
-//        title = selectedCategory?.name
-//
-//        guard if let navBarColor = UIColor(hexString: colorHex) else {fatalError()}
-//
-//        navBar.barTintColor = UIColor(hexString: colorHex)
-//        navBar.tintColor = ContrastColorOf(navBarColor, returnFlat: true)
-//
-//        navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : ContrastColorOf(navBarColor, returnFlat: true)]
-//
-//        searchBar.barTintColor = UIColor(hexString: colorHex)
-//
-//
         }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -79,9 +61,6 @@ class ToDoListViewController: SwipeTableViewController {
     }
     
     
-    
-    
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return todoItems?.count ?? 1
     }
@@ -92,13 +71,11 @@ class ToDoListViewController: SwipeTableViewController {
         if let item = todoItems?[indexPath.row] {
             cell.textLabel?.text = item.title
             
-            if let color = UIColor(hexString: selectedCategory!.color)?.darken(byPercentage: CGFloat(indexPath.row / todoItems!.count)) {
+            if let color = UIColor(hexString: selectedCategory!.color)?.darken(byPercentage: CGFloat(indexPath.row) / CGFloat(todoItems!.count)) {
                 cell.backgroundColor = color
                 cell.textLabel?.textColor = ContrastColorOf(color, returnFlat: true)
             }
-            
-            
-            
+
             //Ternary operator =>
             // value = condition ? valueIfTrue : valueIfFalse
             
@@ -107,35 +84,10 @@ class ToDoListViewController: SwipeTableViewController {
             cell.textLabel?.text = "No Items Added"
         }
         
-//        if item.done == true {
-//            cell.accessoryType = .checkmark
-//        } else {
-//            cell.accessoryType = .none
-//        }
-        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
- 
-//        print(todoItems[indexPath.row])
-        
-//        todoItems[indexPath.row].done = !todoItems[indexPath.row].done
-        
-//        context.delete(todoItems[indexPath.row])
-//        todoItems.remove(at: indexPath.row)
-//        if todoItems[indexPath.row].done == false {
-//            todoItems[indexPath.row].done = true
-//        } else {
-//            todoItems[indexPath.row].done = false
-//        }
-        
-//        saveItems()
-//        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
-//            tableView.cellForRow(at: indexPath)?.accessoryType = .none
-//        } else {
-//            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-//        }
         
         if let item = todoItems?[indexPath.row] {
             do {
@@ -174,7 +126,6 @@ class ToDoListViewController: SwipeTableViewController {
                 } catch {
                     print("Error saving new items")
                 }
-                
             }
             self.tableView.reloadData()
         }
@@ -190,30 +141,7 @@ class ToDoListViewController: SwipeTableViewController {
         
     }
     
-    func saveItems() {
-//        do {
-//            try context.save()
-//        } catch {
-//            print("Error saving context, \(error)")
-//        }
-//        self.tableView.reloadData()
-    }
-    
     func loadItems() {
-        
-//        let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedCategory!.name!)
-//
-//        if let additionalPredicate = predicate {
-//            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, additionalPredicate])
-//        } else {
-//            request.predicate = categoryPredicate
-//        }
-//
-//        do {
-//            todoItems = try context.fetch(request)
-//        } catch {
-//            print("Error fetching data from context, \(error)")
-//        }
         
         todoItems = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
         
@@ -227,7 +155,7 @@ class ToDoListViewController: SwipeTableViewController {
                     realm.delete(item)
                 }
             } catch {
-                print("Error deleting new items")
+                print("Error deleting new items, \(error)")
             }
         }
     }
@@ -237,15 +165,6 @@ class ToDoListViewController: SwipeTableViewController {
 
 extension ToDoListViewController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //let request : NSFetchRequest<Item> = Item.fetchRequest()
-        
-        //let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
-        
-//        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
-        
-//        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-//
-//        loadItems(with: request, predicate: predicate)
         
         todoItems = todoItems?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
         

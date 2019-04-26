@@ -33,20 +33,7 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
         
         let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
             // handle action by updating model with deletion
-            
-//            if let categoryForDelete = self.categories?[indexPath.row] {
-//                do {
-//                    try self.realm.write {
-//                        self.realm.delete(categoryForDelete)
-//                    }
-//                } catch {
-//                    print("Error deleting category, \(error)")
-//                }
-//                //                tableView.reloadData()
-//            }
             self.updateModel(at: indexPath)
-            
-            
         }
         // customize the action appearance
         deleteAction.image = UIImage(named: "trash-icon")
