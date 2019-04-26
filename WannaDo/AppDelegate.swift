@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,9 +17,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+//
+//        let data = Data()
+//        data.name = "isaac"
+//        data.age = 12
+        
+        do {
+            _ = try Realm()
+//            try realm.write {
+//                realm.add(data)
+//            }
+        } catch {
+            print("Error initialising new Realm, \(error)")
+        }
         
         print("didFinishLaunchingWithOptions")
         // Override point for customization after application launch.
+        
         return true
     }
 
